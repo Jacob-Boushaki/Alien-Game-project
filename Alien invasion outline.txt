@@ -1,0 +1,34 @@
+Alien invasion requirements:
+
+User req's
+- player controlls a rocketship
+- may move left and right, not up and down
+- shoot bullets using spacebar
+- fleet of alines moves across and down the sreen
+- if an alien ship touches the ship, that ship is lost
+
+System requirements:
+
+Player 
+- start new game
+- shoot bullets
+- kill alien
+
+
+Alien
+- dodge bullets 
+- win game
+- kill spaceship
+
+
+Software requirements:
+- single rocketship at bottom
+- right one space per right arrow key input
+- left   "     "   "    "     "    "    "
+- shoot a single bullet move straight up per spacebar hit
+- 4 ships appear top of sreen
+- move automatically 
+- same speed in unison
+- destroyed if bullet hits
+- alien ship removed when destroyed
+- 
