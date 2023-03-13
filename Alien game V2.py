@@ -132,7 +132,7 @@ def main():
                 alien.x -= ALIEN_VEL
             if alien.y > WIN_HEIGHT:
                 aliens.remove(alien)
-            elif alien.y + alien.height >= player.y and alien.colliderect(player):
+            elif alien.y + alien.height >= player.y:
                 hit = True
 
 
@@ -147,7 +147,7 @@ def main():
             WINDOW.blit(lost_text, (WIN_WIDTH/2 - lost_text.get_width()/2, 
                                     WIN_HEIGHT/2- lost_text.get_height()/2))
             pygame.display.update()
-            pygame.time.delay(10000)
+            pygame.time.delay(4000)
             break
 
 
