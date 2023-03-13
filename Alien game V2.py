@@ -54,15 +54,15 @@ def draw(player, elapsed_time, aliens, bullets):
 
 
 def main():
-    run = True
-    
+    run = True    
  
     player = pygame.Rect(200, WIN_HEIGHT - PLAYER_HEIGHT - 40,
                          PLAYER_WIDTH, PLAYER_HEIGHT)
+    hit = False
+
     bullets = []
     bullet_fire_time = 0
-    fire = True
-    
+    fire = True    
 
     #This is the clock for our game
     clock = pygame.time.Clock()
@@ -76,9 +76,9 @@ def main():
 
     NEW_WAVE = pygame.USEREVENT + 1
     pygame.time.set_timer(NEW_WAVE, WAVE_DEALAY)
-
     MOVE_DOWN = pygame.USEREVENT + 2
     pygame.time.set_timer(MOVE_DOWN, WAVE_DEALAY)
+  
     
     #This is the main code for our game
     while run:
@@ -102,6 +102,7 @@ def main():
                     alien = pygame.Rect(alien_x, -ALIEN_HEIGHT, ALIEN_WIDTH, ALIEN_HEIGHT)
                     aliens.append(alien)
                 waves -= 1
+
 
 
 
@@ -131,6 +132,9 @@ def main():
                 alien.x -= ALIEN_VEL
             if alien.y > WIN_HEIGHT:
                 aliens.remove(alien)
+            elif alien.y + alien.height >= player.y and alien.colliderect(player):
+                hit = True
+
 
         for bullet in bullets[:]:
             bullet.y -= BULLET_VEL
@@ -138,12 +142,13 @@ def main():
                 bullets.remove(bullet)
 
 
-
-
-
-
-
-
+        if (hit):
+            lost_text = FONT.render(f"You lost!", 1, "white")
+            WINDOW.blit(lost_text, (WIN_WIDTH/2 - lost_text.get_width()/2, 
+                                    WIN_HEIGHT/2- lost_text.get_height()/2))
+            pygame.display.update()
+            pygame.time.delay(10000)
+            break
 
 
 
